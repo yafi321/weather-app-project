@@ -1,0 +1,19 @@
+@font-face {
+  font-family: Heebo-VariableFont_wght;
+  src: url(public/fonts/Heebo-VariableFont_wght.ttf);
+}
+
+body{
+  background-color: rgb(241, 241, 241);
+  font-family: Heebo-VariableFont_wght;
+  height: 100%;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+#root{
+  height: 100%;
+}

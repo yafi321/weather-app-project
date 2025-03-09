@@ -1,0 +1,60 @@
+.appH1 {
+    color: #707070;
+    font-weight: 200;
+    font-size: 30px;
+}
+
+.weatherDisplay {
+    background-color: rgb(221, 228, 230);
+    border-radius: 5px;
+    min-height: 300px;
+    margin-top: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;/
+}
+
+.container {
+    padding: 30px;
+    height: 92%;
+}
+
+@media (min-width: 650px) {
+    .container {
+        display: grid;
+
+        grid-template-areas:
+            "input weather"
+            "input weather"
+            "details weather";
+         grid-template-columns: 1fr 1fr;
+
+    }
+
+    .inputCity {
+        grid-area: input;
+        margin-right: 20px;
+        margin-left: 45px;
+    }
+
+    .weatherDisplay {
+        grid-area: weather;
+        height: 92%;
+        padding-bottom: 20px;
+        justify-content: center;
+        margin-top: 0px;
+    }
+
+    .appH1 {
+        margin-top: 100px;
+        font-size: 30px;
+    }
+
+    .details {
+        grid-area: details;
+        margin-top: 50px;
+        margin-left: 45px;
+
+    }
+}

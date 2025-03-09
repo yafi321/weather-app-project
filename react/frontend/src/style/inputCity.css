@@ -1,0 +1,91 @@
+
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+   
+
+}
+
+label {
+    font-size: 10px;
+    color: rgb(114, 114, 114);
+    margin-left: 10px;
+    
+
+}
+
+.inputDiv {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 10px;
+    padding: 5px;
+    width: 100%;
+    max-width: 280px;
+    margin-right: 10px;
+
+}
+
+.input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 8px;
+    width: 60%;
+}
+
+.inputDiv input[type="submit"] {
+    all: unset; 
+    font-family: inherit;
+    background-color: #046B3B; 
+    color: white;
+    border: none;
+    padding: 4px 18px;
+    font-size: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 200;
+    margin-right: 5px;
+
+}
+
+.inputDiv input[type="submit"]:hover {
+    background-color: #04542f; 
+}
+
+/* רספונסיביות */
+@media (min-width: 650px) {
+    form{
+        margin-top: 50px;
+    }
+
+    label {
+        font-size: 12px;
+    
+    }
+    
+    .inputDiv {
+        width: 100%;
+        max-width: 400px;   
+        height: 50px;
+    }
+    
+    .input {
+        font-size: 22px;
+        width: 70%;
+    }
+    
+    .inputDiv input[type="submit"] {
+        padding: 4px 18px;
+        font-size: 18px;
+        border-radius: 8px;
+    
+    }
+
+    
+
+
+}
