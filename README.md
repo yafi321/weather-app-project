@@ -46,15 +46,11 @@ npm run dev
 ##  Environment Variables (Required)
 Before running the server, you must create a `.env` file inside the **node** directory with the following content:
 
-```env
+env
 API_KEY=your_weatherapi_key
 PORT=5500
 
 This project provides a full-stack weather application where users can search for a city and receive real-time weather data. Follow the setup instructions to run both the client and server successfully.
 
-
-
-
-
-
- 
+## Screenshot
+![Weather App Screenshot](./screenshot.png)
