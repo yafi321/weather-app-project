@@ -8,7 +8,8 @@ import "./style/App.css"
 import Details from './Details.jsx'
 
 function App() {
-  let [dataWeather, setDataWather] = useState(null);//Saving data in the state
+  let [dataWeather, setDataWeather] = useState(null);//Saving data in the state
+  let [error , setError] = useState(null)
   
   function ChangeFormatDay(date1) {//A function that accepts a date string and converts it to a different format
     let date = new Date(date1);
@@ -26,34 +27,36 @@ function App() {
 }
 
 
-  function updateData(city, type = "today") {
-    //A function that receives a city and a function type,
-    //  calls the helper function that retrieves the data from the server accordingly,
-    //  and updates the state.
-    let fetchFunction;
+function updateData(city, type = "today") {
+  //A function that receives a city and a function type,
+  //  calls the helper function that retrieves the data from the server accordingly,
+  //  and updates the state.
+  let fetchFunction;
 
-    switch (type) {
-        case "today":
-            fetchFunction = getTodayWeather;
-            break;
-        case "today-tomorrow":
-            fetchFunction = getTodayAndTomorrowWeather;
-            break;
-        case "yesterday-today":
-            fetchFunction = getYesterdayAndTodayWeather;
-            break;
-        default:
-            console.error("Invalid type for fetching weather data");
-            return;
-    }
+  switch (type) {
+      case "today":
+          fetchFunction = getTodayWeather;
+          break;
+      case "today-tomorrow":
+          fetchFunction = getTodayAndTomorrowWeather;
+          break;
+      case "yesterday-today":
+          fetchFunction = getYesterdayAndTodayWeather;
+          break;
+      default:
+          console.error("Invalid type for fetching weather data");
+          return;
+  }
 
-    fetchFunction(city)
-        .then(res => {
-            setDataWather(res);
-        })
-        .catch(() => {
-            setDataWather(null);
-        });
+  fetchFunction(city).then(res => {
+      if (res.success) {
+          setDataWeather(res.data);
+          setError(null);
+      } else {
+          setError(res.error);
+          setDataWeather(null);
+      }
+  });
 }
 
 
@@ -67,7 +70,7 @@ function App() {
       <InputCity updateData={updateData}></InputCity>
       </div>
 <div className='weatherDisplay'>
-      <WeatherDisplay data={dataWeather} ChangeFormatDay={ChangeFormatDay}></WeatherDisplay></div>
+      <WeatherDisplay data={dataWeather} ChangeFormatDay={ChangeFormatDay} error ={error}></WeatherDisplay></div>
       <Details data={dataWeather} ChangeFormatDay={ChangeFormatDay} className="details"></Details>
     </div>
   )

@@ -1,45 +1,25 @@
 
+
 import axios from "axios";
 
 let baseUrl = "http://localhost:5500/api/weather";
 
-
-export const getTodayWeather = async (city) => {
-    //A function that makes a call to the server and returns today's data.
+const fetchWeatherData = async (url) => {
+    //A function that receives a URL makes a call to the server
+    //  and returns an object with the call status field, and the data
     try {
-        const response = await axios.get(`${baseUrl}/today?city=${city}`, {
-            validateStatus: (status) => status < 500 
-        });
-        return response; 
+        const response = await axios.get(url, { validateStatus: (status) => status < 500 });
+
+        if (response.status >= 400) {
+            return { success: false, error: response.data };
+        }
+
+        return { success: true, data: response.data };
     } catch (error) {
-        return { error: "Something went wrong, please try again later." };
+        return { success: false, error: { title: "Network Error", message: "Something went wrong, please try again later." } };
     }
 };
-
-
-export const getTodayAndTomorrowWeather = async (city) => {
-    //A function that makes a call to the server and returns today's and tomorrow's data.
-
-    try {
-        const response = await axios.get(`${baseUrl}/today-tomorrow?city=${city}`, {
-            validateStatus: (status) => status < 500 
-        });
-        return response; 
-    } catch (error) {
-        return { error: "Something went wrong, please try again later." };
-    }
-};
-
-
-export const getYesterdayAndTodayWeather = async (city) => {
-    //A function that makes a call to the server and returns today's and yesterday's data.
-    try {
-        const response = await axios.get(`${baseUrl}/yesterday-today?city=${city}`, {
-            validateStatus: (status) => status < 500 
-        });
-        return response; 
-    } catch (error) {
-        return { error: "Something went wrong, please try again later." };
-    }
-};
-
+//We will export the various functions
+export const getTodayWeather = async (city) => fetchWeatherData(`${baseUrl}/today?city=${city}`);
+export const getTodayAndTomorrowWeather = async (city) => fetchWeatherData(`${baseUrl}/today-tomorrow?city=${city}`);
+export const getYesterdayAndTodayWeather = async (city) => fetchWeatherData(`${baseUrl}/yesterday-today?city=${city}`);
