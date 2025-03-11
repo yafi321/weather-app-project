@@ -1,24 +1,22 @@
 import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import { getTodayAndTomorrowWeather, getTodayWeather, getYesterdayAndTodayWeather} from "./api/weatherService.js"
-import InputCity from './InputCity'
+import { getTodayAndTomorrowWeather, getTodayWeather, getYesterdayAndTodayWeather} from "../api/weatherService.js"
+import InputCity from './InputCity.jsx'
 import WeatherDisplay from './WeatherDisplay.jsx'
-import "./style/App.css"
+import "../style/App.css"
 import Details from './Details.jsx'
 
 function App() {
   let [dataWeather, setDataWeather] = useState(null);//Saving data in the state
   let [error , setError] = useState(null)
   
-  function ChangeFormatDay(date1) {//A function that accepts a date string and converts it to a different format
-    let date = new Date(date1);
+  function ChangeFormatDay(date) {//A function that accepts a date string and converts it to a different format
+    let newDate = new Date(date);
 
-    let day = String(date.getDate()).padStart(2, '0');
-    let month = String(date.getMonth() + 1).padStart(2, '0');
-    let year = date.getFullYear();
-    let hour = String(date.getHours()).padStart(2, '0');
-    let minute = String(date.getMinutes()).padStart(2, '0');
+    let day = String(newDate.getDate()).padStart(2, '0');
+    let month = String(newDate.getMonth() + 1).padStart(2, '0');
+    let year = newDate.getFullYear();
+    let hour = String(newDate.getHours()).padStart(2, '0');
+    let minute = String(newDate.getMinutes()).padStart(2, '0');
 
 
     let formattedDate = `${day}/${month}/${year} at ${hour}:${minute}`;

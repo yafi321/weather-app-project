@@ -1,5 +1,5 @@
 import { useState , useEffect} from "react";
-import './style/inputCity.css'
+import '../style/inputCity.css'
 
 const InputCity = ({ updateData }) => {
 

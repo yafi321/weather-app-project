@@ -12,11 +12,10 @@ export const getTodayWeather = async (req, res) => {
     try {
         let data = await fetchWeather(city, 1); 
         if (!data || data.error) {
-            return res.status(404).json({ title: "not found", message: `weather data for ${city} not found` });
+            return res.status(500).json({ title: "not found", message: `weather data for ${city} not found` });
         }
         return res.json(data);
     } catch (err) {
-        console.log("error fetching weather data:", err);
         res.status(500).json({ title: "error cannot get weather", message: "something went wrong" });
     }
 };
@@ -35,7 +34,6 @@ export const getTodayAndTomorrowWeather = async (req, res) => {
         }
         return res.json(data);
     } catch (err) {
-        console.log("error fetching weather data:", err);
         res.status(500).json({ title: "error cannot get weather", message: "something went wrong" });
     }
 };
@@ -60,7 +58,6 @@ export const getYesterdayAndTodayWeather = async (req, res) => {
             yesterday: yesterdayData
         });
     } catch (err) {
-        console.log("error fetching weather data:", err);
         res.status(500).json({ title: "error cannot get weather", message: "something went wrong" });
     }
 };

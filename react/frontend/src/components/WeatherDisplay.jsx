@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./style/WeatherDisplay.css";
+import "../style/WeatherDisplay.css";
 
 const WeatherDisplay = ({ data, ChangeFormatDay, error }) => {
     let [currentHour, setCurrentHour] = useState(new Date().getHours());

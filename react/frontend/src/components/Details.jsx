@@ -1,4 +1,4 @@
-import "./style/Details.css"
+import "../style/Details.css"
 import { useState, useEffect } from "react";
 
 const Details = ({ data, ChangeFormatDay }) => {
